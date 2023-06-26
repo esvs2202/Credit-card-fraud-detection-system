@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<head>
+
+    <title> CC Fraud Detection App </title>
+
+</head>
+
+
+
+<style>
+        body {
+            background-color: #ffcc99;
+            color: black;
+            text-align: justify;
+            padding-right: 120px;
+        }
+        </style>
+
+<body>
+
+
+<h1 style="font-size: 28; text-align: center; font-weight: bold; color: blue"><b>Credit card fraud detection system </b></h1>
+<br>
+<img src = "/static/img3.jpg" width="800" height="500" style="background-size:50%;
+            background-repeat: no-repeat;
+            float: right;">
+<div class = "login" style="font-size: 18px">
+    <!-- Inputs to our model-->
+<form action="{{ url_for('predict')}} " method="post">
+    <label for="Customer gender"> <b> Customer Gender :</b> </label>
+    <input type = "radio"  id = "gender_male" name = "gender" value = "Male">
+    <label for="gender_male">Male</label>
+    <input type = "radio"  id = "gender_female" name = "gender" value = "Female">
+    <label for="gender_female">Female</label>
+    <br><br><br>
+
+    <label for= "Customer age group"> <b>Customer Age group : </b> </label>
+    <select name = "Customer age group" id = "Customer age group">
+        <option value = "10-20">10-20</option>
+        <option value = "20-30">20-30</option>
+        <option value = "30-40">30-40</option>
+        <option value = "40-50">40-50</option>
+        <option value = "50-60">50-60</option>
+        <option value = "60-70">60-70</option>
+        <option value = "70-80">70-80</option>
+        <option value = "Above 80">Above 80</option>
+    </select>
+    <br><br><br>
+    <label for="job"> <b> Customer Job Category :</b></label>
+    <select name = "job" id = "job">
+        <option value = 'Stage manager'> Stage manager </option>
+<option value = 'Engineer, communications'> Engineer, communications </option>
+<option value = 'Engineer, drilling'> Engineer, drilling </option>
+<option value = 'Theatre manager'> Theatre manager </option>
+<option value = 'Geophysicist/field seismologist'> Geophysicist/field seismologist </option>
+<option value = 'Information officer'> Information officer </option>
+<option value = 'Pathologist'> Pathologist </option>
+<option value = 'Designer, furniture'> Designer, furniture </option>
+<option value = 'Statistician'> Statistician </option>
+<option value = 'Contractor'> Contractor </option>
+<option value = 'English as a foreign language teacher'> English as a foreign language teacher </option>
+<option value = 'Retail banker'> Retail banker </option>
+<option value = 'Merchandiser, retail'> Merchandiser, retail </option>
+<option value = 'Chartered legal executive (England and Wales)'> Chartered legal executive (England and Wales) </option>
+<option value = 'Teacher, English as a foreign language'> Teacher, English as a foreign language </option>
+<option value = 'Designer, exhibition/display'> Designer, exhibition/display </option>
+<option value = 'Logistics and distribution manager'> Logistics and distribution manager </option>
+<option value = 'Planning and development surveyor'> Planning and development surveyor </option>
+<option value = 'Dispensing optician'> Dispensing optician </option>
+<option value = 'Training and development officer'> Training and development officer </option>
+<option value = 'Investment banker, operational'> Investment banker, operational </option>
+<option value = 'Public house manager'> Public house manager </option>
+<option value = 'Research scientist (life sciences)'> Research scientist (life sciences) </option>
+<option value = 'Pension scheme manager'> Pension scheme manager </option>
+<option value = 'Water engineer'> Water engineer </option>
+<option value = 'Surveyor, rural practice'> Surveyor, rural practice </option>
+<option value = 'Geneticist, molecular'> Geneticist, molecular </option>
+<option value = 'Hydrogeologist'> Hydrogeologist </option>
+<option value = 'Phytotherapist'> Phytotherapist </option>
+<option value = 'Insurance underwriter'> Insurance underwriter </option>
+<option value = 'Arboriculturist'> Arboriculturist </option>
+<option value = 'Research officer, trade union'> Research officer, trade union </option>
+<option value = 'Airline pilot'> Airline pilot </option>
+<option value = 'Scientist, research (physical sciences)'> Scientist, research (physical sciences) </option>
+<option value = 'Herpetologist'> Herpetologist </option>
+<option value = 'Mudlogger'> Mudlogger </option>
+<option value = 'Chief Executive Officer'> Chief Executive Officer </option>
+<option value = 'Orthoptist'> Orthoptist </option>
+<option value = 'Ecologist'> Ecologist </option>
+<option value = 'Leisure centre manager'> Leisure centre manager </option>
+<option value = 'Animal technologist'> Animal technologist </option>
+<option value = 'Travel agency manager'> Travel agency manager </option>
+<option value = 'Sports development officer'> Sports development officer </option>
+<option value = 'Product/process development scientist'> Product/process development scientist </option>
+<option value = 'Manufacturing systems engineer'> Manufacturing systems engineer </option>
+<option value = 'Sports administrator'> Sports administrator </option>
+<option value = 'Writer'> Writer </option>
+<option value = 'Counsellor'> Counsellor </option>
+<option value = 'Special educational needs teacher'> Special educational needs teacher </option>
+<option value = 'Analytical chemist'> Analytical chemist </option>
+<option value = 'Scientist, audiological'> Scientist, audiological </option>
+<option value = 'Conservator, museum/gallery'> Conservator, museum/gallery </option>
+<option value = 'Public librarian'> Public librarian </option>
+<option value = 'Records manager'> Records manager </option>
+<option value = 'Scientist, clinical (histocompatibility and immunogenetics)'> Scientist, clinical (histocompatibility and immunogenetics) </option>
+<option value = 'Interpreter'> Interpreter </option>
+<option value = 'Retail manager'> Retail manager </option>
+<option value = 'Engineer, manufacturing'> Engineer, manufacturing </option>
+<option value = 'Electrical engineer'> Electrical engineer </option>
+<option value = 'Neurosurgeon'> Neurosurgeon </option>
+<option value = 'Museum/gallery exhibitions officer'> Museum/gallery exhibitions officer </option>
+<option value = 'Buyer, retail'> Buyer, retail </option>
+<option value = 'Environmental consultant'> Environmental consultant </option>
+<option value = 'Armed forces technical officer'> Armed forces technical officer </option>
+<option value = 'Clinical research associate'> Clinical research associate </option>
+<option value = 'Higher education careers adviser'> Higher education careers adviser </option>
+<option value = 'Industrial/product designer'> Industrial/product designer </option>
+<option value = 'Nature conservation officer'> Nature conservation officer </option>
+<option value = 'Arts development officer'> Arts development officer </option>
+<option value = 'Oncologist'> Oncologist </option>
+<option value = 'Archaeologist'> Archaeologist </option>
+<option value = 'Community development worker'> Community development worker </option>
+<option value = 'Primary school teacher'> Primary school teacher </option>
+<option value = 'Pharmacologist'> Pharmacologist </option>
+<option value = 'Multimedia programmer'> Multimedia programmer </option>
+<option value = 'Civil Service administrator'> Civil Service administrator </option>
+<option value = 'Investment analyst'> Investment analyst </option>
+<option value = 'Psychotherapist'> Psychotherapist </option>
+<option value = 'IT trainer'> IT trainer </option>
+<option value = 'Editor, commissioning'> Editor, commissioning </option>
+<option value = 'Sub'> Sub </option>
+<option value = 'Osteopath'> Osteopath </option>
+<option value = 'Cabin crew'> Cabin crew </option>
+<option value = 'Clinical biochemist'> Clinical biochemist </option>
+<option value = 'Risk analyst'> Risk analyst </option>
+<option value = 'Seismic interpreter'> Seismic interpreter </option>
+<option value = 'Air broker'> Air broker </option>
+<option value = 'Paramedic'> Paramedic </option>
+<option value = 'Civil Service fast streamer'> Civil Service fast streamer </option>
+<option value = 'English as a second language teacher'> English as a second language teacher </option>
+<option value = 'Corporate investment banker'> Corporate investment banker </option>
+<option value = 'Education officer, community'> Education officer, community </option>
+<option value = 'Therapist, sports'> Therapist, sports </option>
+<option value = 'Financial trader'> Financial trader </option>
+<option value = 'Amenity horticulturist'> Amenity horticulturist </option>
+<option value = 'Health physicist'> Health physicist </option>
+<option value = 'Administrator, charities/voluntary organisations'> Administrator, charities/voluntary organisations </option>
+<option value = 'Energy engineer'> Energy engineer </option>
+<option value = 'Communications engineer'> Communications engineer </option>
+<option value = 'Legal secretary'> Legal secretary </option>
+<option value = 'Textile designer'> Textile designer </option>
+<option value = 'Location manager'> Location manager </option>
+<option value = 'Furniture conservator/restorer'> Furniture conservator/restorer </option>
+<option value = 'Buyer, industrial'> Buyer, industrial </option>
+<option value = 'Producer, radio'> Producer, radio </option>
+<option value = 'Toxicologist'> Toxicologist </option>
+<option value = 'Psychologist, sport and exercise'> Psychologist, sport and exercise </option>
+<option value = 'Video editor'> Video editor </option>
+<option value = 'Drilling engineer'> Drilling engineer </option>
+<option value = 'Early years teacher'> Early years teacher </option>
+<option value = 'Television floor manager'> Television floor manager </option>
+<option value = 'Clinical cytogeneticist'> Clinical cytogeneticist </option>
+<option value = 'Colour technologist'> Colour technologist </option>
+<option value = 'Race relations officer'> Race relations officer </option>
+<option value = 'Sales professional, IT'> Sales professional, IT </option>
+<option value = 'Immunologist'> Immunologist </option>
+<option value = 'Warden/ranger'> Warden/ranger </option>
+<option value = 'Engineer, mining'> Engineer, mining </option>
+<option value = 'Psychologist, counselling'> Psychologist, counselling </option>
+<option value = 'Aeronautical engineer'> Aeronautical engineer </option>
+<option value = 'Land/geomatics surveyor'> Land/geomatics surveyor </option>
+<option value = 'Programme researcher, broadcasting/film/video'> Programme researcher, broadcasting/film/video </option>
+<option value = 'Therapist, drama'> Therapist, drama </option>
+<option value = 'Museum education officer'> Museum education officer </option>
+<option value = 'Magazine features editor'> Magazine features editor </option>
+<option value = 'Paediatric nurse'> Paediatric nurse </option>
+<option value = 'Music therapist'> Music therapist </option>
+<option value = 'Prison officer'> Prison officer </option>
+<option value = 'Site engineer'> Site engineer </option>
+<option value = 'Engineer, maintenance'> Engineer, maintenance </option>
+<option value = 'Solicitor'> Solicitor </option>
+<option value = 'Learning mentor'> Learning mentor </option>
+<option value = 'Therapist, music'> Therapist, music </option>
+<option value = 'Ambulance person'> Ambulance person </option>
+<option value = 'Scientist, research (medical)'> Scientist, research (medical) </option>
+<option value = 'Farm manager'> Farm manager </option>
+<option value = 'Secretary/administrator'> Secretary/administrator </option>
+<option value = 'Copywriter, advertising'> Copywriter, advertising </option>
+<option value = 'Engineer, water'> Engineer, water </option>
+<option value = 'Museum/gallery conservator'> Museum/gallery conservator </option>
+<option value = 'Technical brewer'> Technical brewer </option>
+<option value = 'Teacher, secondary school'> Teacher, secondary school </option>
+<option value = 'Therapist, horticultural'> Therapist, horticultural </option>
+<option value = 'Learning disability nurse'> Learning disability nurse </option>
+<option value = 'Insurance broker'> Insurance broker </option>
+<option value = 'Science writer'> Science writer </option>
+<option value = 'Engineer, broadcasting (operations)'> Engineer, broadcasting (operations) </option>
+<option value = 'Teacher, early years/pre'> Teacher, early years/pre </option>
+<option value = 'Engineer, structural'> Engineer, structural </option>
+<option value = 'Clothing/textile technologist'> Clothing/textile technologist </option>
+<option value = 'Radiographer, diagnostic'> Radiographer, diagnostic </option>
+<option value = 'Musician'> Musician </option>
+<option value = 'Wellsite geologist'> Wellsite geologist </option>
+<option value = 'Doctor, hospital'> Doctor, hospital </option>
+<option value = 'Copy'> Copy </option>
+<option value = 'Diagnostic radiographer'> Diagnostic radiographer </option>
+<option value = 'Petroleum engineer'> Petroleum engineer </option>
+<option value = 'Information systems manager'> Information systems manager </option>
+<option value = 'Press sub'> Press sub </option>
+<option value = 'Hotel manager'> Hotel manager </option>
+<option value = 'Animal nutritionist'> Animal nutritionist </option>
+<option value = 'Occupational hygienist'> Occupational hygienist </option>
+<option value = 'Professor Emeritus'> Professor Emeritus </option>
+<option value = 'Podiatrist'> Podiatrist </option>
+<option value = 'Trading standards officer'> Trading standards officer </option>
+<option value = 'Media planner'> Media planner </option>
+<option value = 'Radio producer'> Radio producer </option>
+<option value = 'Building control surveyor'> Building control surveyor </option>
+<option value = 'Manufacturing engineer'> Manufacturing engineer </option>
+<option value = 'Interior and spatial designer'> Interior and spatial designer </option>
+<option value = 'Product designer'> Product designer </option>
+<option value = 'Camera operator'> Camera operator </option>
+<option value = 'Forensic psychologist'> Forensic psychologist </option>
+<option value = 'Accountant, chartered'> Accountant, chartered </option>
+<option value = 'Chemist, analytical'> Chemist, analytical </option>
+<option value = 'Aid worker'> Aid worker </option>
+<option value = 'IT consultant'> IT consultant </option>
+<option value = 'Psychologist, clinical'> Psychologist, clinical </option>
+<option value = 'Barrister'> Barrister </option>
+<option value = 'Psychiatric nurse'> Psychiatric nurse </option>
+<option value = 'Conservator, furniture'> Conservator, furniture </option>
+<option value = 'Chief Strategy Officer'> Chief Strategy Officer </option>
+<option value = 'Restaurant manager, fast food'> Restaurant manager, fast food </option>
+<option value = 'Development worker, community'> Development worker, community </option>
+<option value = 'Ceramics designer'> Ceramics designer </option>
+<option value = 'Engineer, building services'> Engineer, building services </option>
+<option value = 'Theatre director'> Theatre director </option>
+<option value = 'Tourist information centre manager'> Tourist information centre manager </option>
+<option value = 'Conservation officer, historic buildings'> Conservation officer, historic buildings </option>
+<option value = 'Theme park manager'> Theme park manager </option>
+<option value = 'Horticultural consultant'> Horticultural consultant </option>
+<option value = 'Purchasing manager'> Purchasing manager </option>
+<option value = 'Teacher, adult education'> Teacher, adult education </option>
+<option value = 'Surveyor, mining'> Surveyor, mining </option>
+<option value = 'Barrister's clerk'> Barrister's clerk </option>
+<option value = 'Music tutor'> Music tutor </option>
+<option value = 'Futures trader'> Futures trader </option>
+<option value = 'Media buyer'> Media buyer </option>
+<option value = 'Curator'> Curator </option>
+<option value = 'Forest/woodland manager'> Forest/woodland manager </option>
+<option value = 'Applications developer'> Applications developer </option>
+<option value = 'Designer, ceramics/pottery'> Designer, ceramics/pottery </option>
+<option value = 'Architectural technologist'> Architectural technologist </option>
+<option value = 'Private music teacher'> Private music teacher </option>
+<option value = 'Engineer, civil (consulting)'> Engineer, civil (consulting) </option>
+<option value = 'Set designer'> Set designer </option>
+<option value = 'Embryologist, clinical'> Embryologist, clinical </option>
+<option value = 'Surveyor, land/geomatics'> Surveyor, land/geomatics </option>
+<option value = 'Press photographer'> Press photographer </option>
+<option value = 'Designer, textile'> Designer, textile </option>
+<option value = 'Medical technical officer'> Medical technical officer </option>
+<option value = 'Engineer, control and instrumentation'> Engineer, control and instrumentation </option>
+<option value = 'Teaching laboratory technician'> Teaching laboratory technician </option>
+<option value = 'Tourism officer'> Tourism officer </option>
+<option value = 'Marketing executive'> Marketing executive </option>
+<option value = 'Insurance risk surveyor'> Insurance risk surveyor </option>
+<option value = 'Animator'> Animator </option>
+<option value = 'Librarian, public'> Librarian, public </option>
+<option value = 'Commercial/residential surveyor'> Commercial/residential surveyor </option>
+<option value = 'Engineering geologist'> Engineering geologist </option>
+<option value = 'Horticultural therapist'> Horticultural therapist </option>
+<option value = 'Development worker, international aid'> Development worker, international aid </option>
+<option value = 'Regulatory affairs officer'> Regulatory affairs officer </option>
+<option value = 'Broadcast engineer'> Broadcast engineer </option>
+<option value = 'Engineer, automotive'> Engineer, automotive </option>
+<option value = 'Psychiatrist'> Psychiatrist </option>
+<option value = 'Chief Marketing Officer'> Chief Marketing Officer </option>
+<option value = 'Fisheries officer'> Fisheries officer </option>
+<option value = 'Accountant, chartered public finance'> Accountant, chartered public finance </option>
+<option value = 'Radiographer, therapeutic'> Radiographer, therapeutic </option>
+<option value = 'Tax inspector'> Tax inspector </option>
+<option value = 'Pensions consultant'> Pensions consultant </option>
+<option value = 'Research scientist (maths)'> Research scientist (maths) </option>
+<option value = 'Scientist, biomedical'> Scientist, biomedical </option>
+<option value = 'Exhibition designer'> Exhibition designer </option>
+<option value = 'Electronics engineer'> Electronics engineer </option>
+<option value = 'Occupational psychologist'> Occupational psychologist </option>
+<option value = 'Counselling psychologist'> Counselling psychologist </option>
+<option value = 'Lawyer'> Lawyer </option>
+<option value = 'Psychotherapist, child'> Psychotherapist, child </option>
+<option value = 'Community arts worker'> Community arts worker </option>
+<option value = 'Trade mark attorney'> Trade mark attorney </option>
+<option value = 'Exhibitions officer, museum/gallery'> Exhibitions officer, museum/gallery </option>
+<option value = 'Economist'> Economist </option>
+<option value = 'Engineer, production'> Engineer, production </option>
+<option value = 'Claims inspector/assessor'> Claims inspector/assessor </option>
+<option value = 'Facilities manager'> Facilities manager </option>
+<option value = 'Surveyor, minerals'> Surveyor, minerals </option>
+<option value = 'Film/video editor'> Film/video editor </option>
+<option value = 'Special effects artist'> Special effects artist </option>
+<option value = 'Production manager'> Production manager </option>
+<option value = 'Research scientist (physical sciences)'> Research scientist (physical sciences) </option>
+<option value = 'Mechanical engineer'> Mechanical engineer </option>
+<option value = 'Visual merchandiser'> Visual merchandiser </option>
+<option value = 'Tour manager'> Tour manager </option>
+<option value = 'Designer, multimedia'> Designer, multimedia </option>
+<option value = 'Intelligence analyst'> Intelligence analyst </option>
+<option value = 'Dealer'> Dealer </option>
+<option value = 'Engineer, biomedical'> Engineer, biomedical </option>
+<option value = 'Make'> Make </option>
+<option value = 'Engineer, petroleum'> Engineer, petroleum </option>
+<option value = 'Medical secretary'> Medical secretary </option>
+<option value = 'Environmental education officer'> Environmental education officer </option>
+<option value = 'Administrator, arts'> Administrator, arts </option>
+<option value = 'Production assistant, radio'> Production assistant, radio </option>
+<option value = 'Designer, industrial/product'> Designer, industrial/product </option>
+<option value = 'Comptroller'> Comptroller </option>
+<option value = 'Chartered loss adjuster'> Chartered loss adjuster </option>
+<option value = 'Retail merchandiser'> Retail merchandiser </option>
+<option value = 'Retail buyer'> Retail buyer </option>
+<option value = 'Product manager'> Product manager </option>
+<option value = 'Data scientist'> Data scientist </option>
+<option value = 'Biomedical scientist'> Biomedical scientist </option>
+<option value = 'Exercise physiologist'> Exercise physiologist </option>
+<option value = 'Warehouse manager'> Warehouse manager </option>
+<option value = 'Maintenance engineer'> Maintenance engineer </option>
+<option value = 'Community pharmacist'> Community pharmacist </option>
+<option value = 'Nutritional therapist'> Nutritional therapist </option>
+<option value = 'Scientist, marine'> Scientist, marine </option>
+<option value = 'Administrator, education'> Administrator, education </option>
+<option value = 'Optician, dispensing'> Optician, dispensing </option>
+<option value = 'Broadcast journalist'> Broadcast journalist </option>
+<option value = 'Lexicographer'> Lexicographer </option>
+<option value = 'Insurance claims handler'> Insurance claims handler </option>
+<option value = 'Event organiser'> Event organiser </option>
+<option value = 'Glass blower/designer'> Glass blower/designer </option>
+<option value = 'Research officer, political party'> Research officer, political party </option>
+<option value = 'Pilot, airline'> Pilot, airline </option>
+<option value = 'Commercial horticulturist'> Commercial horticulturist </option>
+<option value = 'Health and safety adviser'> Health and safety adviser </option>
+<option value = 'Advertising account planner'> Advertising account planner </option>
+<option value = 'Archivist'> Archivist </option>
+<option value = 'Physiotherapist'> Physiotherapist </option>
+<option value = 'Financial adviser'> Financial adviser </option>
+<option value = 'Engineer, agricultural'> Engineer, agricultural </option>
+<option value = 'Armed forces logistics/support/administrative officer'> Armed forces logistics/support/administrative officer </option>
+<option value = 'Dance movement psychotherapist'> Dance movement psychotherapist </option>
+<option value = 'Geologist, engineering'> Geologist, engineering </option>
+<option value = 'Nurse, mental health'> Nurse, mental health </option>
+<option value = 'Charity fundraiser'> Charity fundraiser </option>
+<option value = 'Materials engineer'> Materials engineer </option>
+<option value = 'Scientist, research (maths)'> Scientist, research (maths) </option>
+<option value = 'Lecturer, higher education'> Lecturer, higher education </option>
+<option value = 'Patent attorney'> Patent attorney </option>
+<option value = 'Field trials officer'> Field trials officer </option>
+<option value = 'Editor, magazine features'> Editor, magazine features </option>
+<option value = 'Librarian, academic'> Librarian, academic </option>
+<option value = 'Armed forces training and education officer'> Armed forces training and education officer </option>
+<option value = 'Engineer, materials'> Engineer, materials </option>
+<option value = 'Fine artist'> Fine artist </option>
+<option value = 'Television camera operator'> Television camera operator </option>
+<option value = 'Production engineer'> Production engineer </option>
+<option value = 'Advice worker'> Advice worker </option>
+<option value = 'Air cabin crew'> Air cabin crew </option>
+<option value = 'Mental health nurse'> Mental health nurse </option>
+<option value = 'Senior tax professional/tax inspector'> Senior tax professional/tax inspector </option>
+<option value = 'Environmental manager'> Environmental manager </option>
+<option value = 'Psychologist, forensic'> Psychologist, forensic </option>
+<option value = 'Broadcast presenter'> Broadcast presenter </option>
+<option value = 'Jewellery designer'> Jewellery designer </option>
+<option value = 'Optometrist'> Optometrist </option>
+<option value = 'Journalist, newspaper'> Journalist, newspaper </option>
+<option value = 'Secondary school teacher'> Secondary school teacher </option>
+<option value = 'Control and instrumentation engineer'> Control and instrumentation engineer </option>
+<option value = 'Engineer, land'> Engineer, land </option>
+<option value = 'Fitness centre manager'> Fitness centre manager </option>
+<option value = 'Network engineer'> Network engineer </option>
+<option value = 'Education officer, museum'> Education officer, museum </option>
+<option value = 'General practice doctor'> General practice doctor </option>
+<option value = 'Environmental health practitioner'> Environmental health practitioner </option>
+<option value = 'Licensed conveyancer'> Licensed conveyancer </option>
+<option value = 'Politician's assistant'> Politician's assistant </option>
+<option value = 'Television/film/video producer'> Television/film/video producer </option>
+<option value = 'Therapist, occupational'> Therapist, occupational </option>
+<option value = 'Chiropodist'> Chiropodist </option>
+<option value = 'Charity officer'> Charity officer </option>
+<option value = 'Tree surgeon'> Tree surgeon </option>
+<option value = 'Social researcher'> Social researcher </option>
+<option value = 'Civil engineer, contracting'> Civil engineer, contracting </option>
+<option value = 'Editor, film/video'> Editor, film/video </option>
+<option value = 'Educational psychologist'> Educational psychologist </option>
+<option value = 'Child psychotherapist'> Child psychotherapist </option>
+<option value = 'Metallurgist'> Metallurgist </option>
+<option value = 'Surgeon'> Surgeon </option>
+<option value = 'Personnel officer'> Personnel officer </option>
+<option value = 'Radio broadcast assistant'> Radio broadcast assistant </option>
+<option value = 'Doctor, general practice'> Doctor, general practice </option>
+<option value = 'Human resources officer'> Human resources officer </option>
+<option value = 'Firefighter'> Firefighter </option>
+<option value = 'Herbalist'> Herbalist </option>
+<option value = 'Public affairs consultant'> Public affairs consultant </option>
+<option value = 'Scientist, physiological'> Scientist, physiological </option>
+<option value = 'Public relations account executive'> Public relations account executive </option>
+<option value = 'Presenter, broadcasting'> Presenter, broadcasting </option>
+<option value = 'Probation officer'> Probation officer </option>
+<option value = 'Nurse, children's'> Nurse, children's </option>
+<option value = 'Further education lecturer'> Further education lecturer </option>
+<option value = 'Cytogeneticist'> Cytogeneticist </option>
+<option value = 'Systems developer'> Systems developer </option>
+<option value = 'Geoscientist'> Geoscientist </option>
+<option value = 'Health service manager'> Health service manager </option>
+<option value = 'Chartered public finance accountant'> Chartered public finance accountant </option>
+<option value = 'Historic buildings inspector/conservation officer'> Historic buildings inspector/conservation officer </option>
+<option value = 'Programmer, applications'> Programmer, applications </option>
+<option value = 'Operations geologist'> Operations geologist </option>
+<option value = 'Furniture designer'> Furniture designer </option>
+<option value = 'Veterinary surgeon'> Veterinary surgeon </option>
+<option value = 'Education administrator'> Education administrator </option>
+<option value = 'Tax adviser'> Tax adviser </option>
+<option value = 'Accounting technician'> Accounting technician </option>
+<option value = 'Estate manager/land agent'> Estate manager/land agent </option>
+<option value = 'Physicist, medical'> Physicist, medical </option>
+<option value = 'Systems analyst'> Systems analyst </option>
+<option value = 'Energy manager'> Energy manager </option>
+<option value = 'Geochemist'> Geochemist </option>
+<option value = 'Emergency planning/management officer'> Emergency planning/management officer </option>
+<option value = 'Television production assistant'> Television production assistant </option>
+<option value = 'Quantity surveyor'> Quantity surveyor </option>
+<option value = 'Chief Technology Officer'> Chief Technology Officer </option>
+<option value = 'Call centre manager'> Call centre manager </option>
+<option value = 'Scientific laboratory technician'> Scientific laboratory technician </option>
+<option value = 'Freight forwarder'> Freight forwarder </option>
+<option value = 'Heritage manager'> Heritage manager </option>
+<option value = 'Administrator'> Administrator </option>
+<option value = 'Garment/textile technologist'> Garment/textile technologist </option>
+<option value = 'Loss adjuster, chartered'> Loss adjuster, chartered </option>
+<option value = 'Waste management officer'> Waste management officer </option>
+<option value = 'Oceanographer'> Oceanographer </option>
+<option value = 'Administrator, local government'> Administrator, local government </option>
+<option value = 'TEFL teacher'> TEFL teacher </option>
+<option value = 'Landscape architect'> Landscape architect </option>
+<option value = 'Teacher, special educational needs'> Teacher, special educational needs </option>
+<option value = 'Volunteer coordinator'> Volunteer coordinator </option>
+<option value = 'Careers adviser'> Careers adviser </option>
+<option value = 'Cartographer'> Cartographer </option>
+<option value = 'Solicitor, Scotland'> Solicitor, Scotland </option>
+<option value = 'Database administrator'> Database administrator </option>
+<option value = 'Engineer, electronics'> Engineer, electronics </option>
+<option value = 'Artist'> Artist </option>
+<option value = 'Building surveyor'> Building surveyor </option>
+<option value = 'Mining engineer'> Mining engineer </option>
+<option value = 'Web designer'> Web designer </option>
+<option value = 'Academic librarian'> Academic librarian </option>
+<option value = 'Designer, television/film set'> Designer, television/film set </option>
+<option value = 'Advertising copywriter'> Advertising copywriter </option>
+<option value = 'Equities trader'> Equities trader </option>
+<option value = 'Investment banker, corporate'> Investment banker, corporate </option>
+<option value = 'Police officer'> Police officer </option>
+<option value = 'Designer, interior/spatial'> Designer, interior/spatial </option>
+<option value = 'Homeopath'> Homeopath </option>
+<option value = 'Chemical engineer'> Chemical engineer </option>
+<option value = 'Associate Professor'> Associate Professor </option>
+<option value = 'Market researcher'> Market researcher </option>
+<option value = 'Hospital doctor'> Hospital doctor </option>
+<option value = 'Dancer'> Dancer </option>
+<option value = 'Production assistant, television'> Production assistant, television </option>
+<option value = 'Chief Operating Officer'> Chief Operating Officer </option>
+<option value = 'Naval architect'> Naval architect </option>
+<option value = 'Occupational therapist'> Occupational therapist </option>
+<option value = 'Advertising account executive'> Advertising account executive </option>
+<option value = 'Programmer, multimedia'> Programmer, multimedia </option>
+<option value = 'Biomedical engineer'> Biomedical engineer </option>
+<option value = 'Town planner'> Town planner </option>
+<option value = 'Outdoor activities/education manager'> Outdoor activities/education manager </option>
+<option value = 'Physiological scientist'> Physiological scientist </option>
+<option value = 'Operational researcher'> Operational researcher </option>
+<option value = 'Audiological scientist'> Audiological scientist </option>
+<option value = 'Bookseller'> Bookseller </option>
+<option value = 'Pharmacist, community'> Pharmacist, community </option>
+<option value = 'Geologist, wellsite'> Geologist, wellsite </option>
+<option value = 'Chartered accountant'> Chartered accountant </option>
+<option value = 'Accountant, chartered certified'> Accountant, chartered certified </option>
+<option value = 'Acupuncturist'> Acupuncturist </option>
+<option value = 'Illustrator'> Illustrator </option>
+<option value = 'Chief of Staff'> Chief of Staff </option>
+<option value = 'Transport planner'> Transport planner </option>
+<option value = 'Art therapist'> Art therapist </option>
+<option value = 'Magazine journalist'> Magazine journalist </option>
+<option value = 'Barista'> Barista </option>
+<option value = 'Designer, jewellery'> Designer, jewellery </option>
+<option value = 'Chief Financial Officer'> Chief Financial Officer </option>
+<option value = 'Producer, television/film/video'> Producer, television/film/video </option>
+<option value = 'Industrial buyer'> Industrial buyer </option>
+<option value = 'Agricultural consultant'> Agricultural consultant </option>
+<option value = 'Immigration officer'> Immigration officer </option>
+<option value = 'Soil scientist'> Soil scientist </option>
+<option value = 'Lecturer, further education'> Lecturer, further education </option>
+<option value = 'Water quality scientist'> Water quality scientist </option>
+<option value = 'Research scientist (medical)'> Research scientist (medical) </option>
+<option value = 'Pharmacist, hospital'> Pharmacist, hospital </option>
+<option value = 'Management consultant'> Management consultant </option>
+<option value = 'Sales promotion account executive'> Sales promotion account executive </option>
+<option value = 'Telecommunications researcher'> Telecommunications researcher </option>
+<option value = 'Therapist, art'> Therapist, art </option>
+<option value = 'Quarry manager'> Quarry manager </option>
+<option value = 'Company secretary'> Company secretary </option>
+<option value = 'Biochemist, clinical'> Biochemist, clinical </option>
+<option value = 'Rural practice surveyor'> Rural practice surveyor </option>
+<option value = 'Health visitor'> Health visitor </option>
+<option value = 'Contracting civil engineer'> Contracting civil engineer </option>
+<option value = 'Horticulturist, commercial'> Horticulturist, commercial </option>
+<option value = 'Surveyor, hydrographic'> Surveyor, hydrographic </option>
+<option value = 'Equality and diversity officer'> Equality and diversity officer </option>
+<option value = 'Land'> Land </option>
+<option value = 'Sport and exercise psychologist'> Sport and exercise psychologist </option>
+<option value = 'Engineer, technical sales'> Engineer, technical sales </option>
+<option value = 'Social research officer, government'> Social research officer, government </option>
+<option value = 'Gaffer'> Gaffer </option>
+<option value = 'Air traffic controller'> Air traffic controller </option>
+<option value = 'Structural engineer'> Structural engineer </option>
+<option value = 'Software engineer'> Software engineer </option>
+<option value = 'Architect'> Architect </option>
+<option value = 'Field seismologist'> Field seismologist </option>
+<option value = 'Teacher, primary school'> Teacher, primary school </option>
+<option value = 'Engineer, site'> Engineer, site </option>
+<option value = 'Operational investment banker'> Operational investment banker </option>
+<option value = 'Building services engineer'> Building services engineer </option>
+<option value = 'Minerals surveyor'> Minerals surveyor </option>
+<option value = 'Medical sales representative'> Medical sales representative </option>
+<option value = 'Engineer, civil (contracting)'> Engineer, civil (contracting) </option>
+<option value = 'Sales executive'> Sales executive </option>
+<option value = 'Careers information officer'> Careers information officer </option>
+<option value = 'Hydrographic surveyor'> Hydrographic surveyor </option>
+<option value = 'Local government officer'> Local government officer </option>
+<option value = 'Engineer, aeronautical'> Engineer, aeronautical </option>
+<option value = 'Art gallery manager'> Art gallery manager </option>
+<option value = 'Public relations officer'> Public relations officer </option>
+<option value = 'Catering manager'> Catering manager </option>
+<option value = 'Plant breeder/geneticist'> Plant breeder/geneticist </option>
+<option value = 'Hospital pharmacist'> Hospital pharmacist </option>
+<option value = 'Medical physicist'> Medical physicist </option>
+<option value = 'Commissioning editor'> Commissioning editor </option>
+<option value = 'Hydrologist'> Hydrologist </option>
+<option value = 'Clinical psychologist'> Clinical psychologist </option>
+<option value = 'Community education officer'> Community education officer </option>
+<option value = 'Ship broker'> Ship broker </option>
+<option value = 'Health promotion specialist'> Health promotion specialist </option>
+
+    </select>
+    <br><br><br>
+
+    <label for="city_pop"><b>Customer's City population :</b></label>
+    <input type = "number" id = "city_pop" name = "city_pop"  required = "required" />
+    <br><br><br>
+    <label for="zp_cd"> <b>Customer's Zip code :</b></label>
+    <input type = "number" id = "zp_cd" name="zp_cd" required = "required" />
+    <br><br><br>
+    <label for="txn_amt"> <b> Transaction amount (in US Dollars) :</b> </label>
+    <input type = "number" id = "txn_amt" name = "txn_amt" required = "required" />
+    <br><br><br>
+    <label for = "txn_time"><b> Transaction time (in hours) :</b></label>
+    <select name = 'txn_time' id = 'txn_time'>
+        <option value = '00'> 00 </option>
+<option value = '01'> 01 </option>
+<option value = '02'> 02 </option>
+<option value = '03'> 03 </option>
+<option value = '04'> 04 </option>
+<option value = '05'> 05 </option>
+<option value = '06'> 06 </option>
+<option value = '07'> 07 </option>
+<option value = '08'> 08 </option>
+<option value = '09'> 09 </option>
+<option value = '10'> 10 </option>
+<option value = '11'> 11 </option>
+<option value = '12'> 12 </option>
+<option value = '13'> 13 </option>
+<option value = '14'> 14 </option>
+<option value = '15'> 15 </option>
+<option value = '16'> 16 </option>
+<option value = '17'> 17 </option>
+<option value = '18'> 18 </option>
+<option value = '19'> 19 </option>
+<option value = '20'> 20 </option>
+<option value = '21'> 21 </option>
+<option value = '22'> 22 </option>
+<option value = '23'> 23 </option>
+    </select>
+<br><br><br>
+
+<label for = "merch_catg"><b>Merchant Category :</b></label>
+    <select name = 'merch_catg' id = 'merch_catg'>
+        <option value = 'Travel'>Travel</option>
+<option value = 'Grocery-Online'>Grocery-Online</option>
+<option value = 'Gas-Transport'>Gas-Transport</option>
+<option value = 'Kids-Pets'>Kids-Pets</option>
+<option value = 'Health & Fitness'>Health & Fitness</option>
+<option value = 'Personal care'>Personal care</option>
+<option value = 'Food & Dining'>Food & Dining</option>
+<option value = 'Miscellaneous-POS'>Miscellaneous-POS</option>
+<option value = 'Home'>Home</option>
+<option value = 'Grocery-POS'>Grocery-POS</option>
+<option value = 'Entertainment'>Entertainment</option>
+<option value = 'Miscellaneous-Online'>Miscellaneous-Online</option>
+<option value = 'Shopping-POS'>Shopping-POS</option>
+<option value = 'Shopping-Online'>Shopping-Online</option>
+
+    </select>
+<br><br><br>
+
+    <button type="submit" class="btn btn-primary btn-block btn-large" style="padding: 10px 15px" >Predict</button>
+    {{ prediction_text }}
+    <br><br>
+
+</form> <br><br>
+    <footer class="button"><f> Designed by <a href="https://www.linkedin.com/in/svsriramerramilli/" style="text-align: center;" > S V Sriram Erramilli </a>  |  <a href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fnews.mit.edu%2F2018%2Fmachine-learning-financial-credit-card-fraud-0920&psig=AOvVaw0dIBJqAgvpxPUxQivNI5xu&ust=1687802019499000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCODZ78_-3v8CFQAAAAAdAAAAABAR" style="text-align: right;"> Image source </a> </f></footer>
+    <!--footer class="button"></footer-->
+
+
+    <style>
+a:link, a:visited {
+  color: black;
+  padding: 2px 5px;
+  }
+
+
+</style>
+
+</div>
+
+
+
+</body>
+</html>
