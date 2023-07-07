@@ -1,3 +1,3 @@
 model,train_recall_score,test_recall_score,Cost saved by the model per month
 Logistic Regression model,0.93,0.93,"$115,538.03"
-Random Forest Clasifier model,0.97,0.95,"$203,939.169"
+Random Forest Clasifier model,0.97,0.95,"$203,781.08"
