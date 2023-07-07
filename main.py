@@ -6,7 +6,7 @@ import mysql.connector
 
 app = Flask(__name__)
 
-model = joblib.load('models/randomforest_model.pkl')  # loading the saved random forest classifier model.
+model = joblib.load('randomforest_model.pkl')  # loading the saved random forest classifier model.
 
 
 @app.route('/')
