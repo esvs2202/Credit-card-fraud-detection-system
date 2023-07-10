@@ -5,7 +5,7 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-model = joblib.load('randomforest_model.pkl')  # loading the saved random forest classifier model.
+model = joblib.load('models/randomforest_model.pkl')  # loading the saved random forest classifier model.
 
 
 @app.route('/')
@@ -56,7 +56,9 @@ def predict():
         print(prediction)
         
         return render_template('index.html',
-                               prediction_text=f"This transaction is {result}")
+                               prediction_text=f"Result: The transaction of ${f_list[0]} at {f_list[1]}:00 hours for "
+                                               f"the "
+                                               f"merchant category {f_list[2]} is {result}")
 
 
 if __name__ == "__main__":
