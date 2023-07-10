@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 <head>
 
     <title> CC Fraud Detection App </title>
@@ -26,9 +24,8 @@
 <br>
 <b> {{ prediction_text }} </b>
 <br><br><br>
-<img src = "/static/img3.jpg" width="800" height="500" style="background-size:50%;
-            background-repeat: no-repeat;
-            float: right;">
+<img src = "/static/img3.jpg" width="200" height="200" style="background-size:50%;
+            background-repeat: no-repeat;>
 <div class = "login" style="font-size: 18px">
     <!-- Inputs to our model-->
 <form action="{{ url_for('predict')}} " method="post">
@@ -88,7 +85,7 @@
     <button type="submit" class="btn btn-primary btn-block btn-large" style="padding: 10px 15px" >Predict</button>
     <br><br>
 
-</form> <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</form> <br><br>
     <footer class="button"><f> Designed by <a href="https://www.linkedin.com/in/svsriramerramilli/" style="text-align: right;" > S V Sriram Erramilli </a> </f></footer>
     <!--footer class="button"></footer-->
 
