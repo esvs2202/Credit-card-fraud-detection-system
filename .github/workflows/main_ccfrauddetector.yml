@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'CCFraudDetector'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_72D44B872D0D4624ADBBC8CE79853C47 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_72F9EE5105774673A0D3335A74EC71D8 }}
