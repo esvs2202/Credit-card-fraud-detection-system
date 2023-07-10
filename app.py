@@ -53,13 +53,11 @@ def predict():
         prediction = model.predict(df)
         result_dict = {0: 'Non-fraudulent', 1: 'Fraudulent'}
         result = result_dict.get(prediction[0])
-        print(prediction)
-        
+
         return render_template('index.html',
-                               prediction_text=f"Result: The transaction of ${f_list[0]} at {f_list[1]}:00 hours for "
+                               prediction_text=f"Result: Initiated transaction of ${f_list[0]} at {f_list[1]}:00 hours for "
                                                f"the "
                                                f"merchant category {f_list[2]} is {result}")
-
 
 if __name__ == "__main__":
     app.run(debug=True)
