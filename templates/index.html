@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -14,12 +13,12 @@
 
 <style>
         body {
-            background-color: #ffcc99;
+            background-color: MistyRose;
             color: black;
             text-align: center;
             padding-right: 50px;
             font-family: "Calibri";
-        }
+                    }
         </style>
 
 <body>
@@ -29,12 +28,12 @@
 <br>
 <b> {{ prediction_text }} </b>
 <br><br>
-<img src = "/static/img3.jpg" width="200" height="200" style="background-size:50%;
+<img src = "/static/img3.jpg" width="400" height="200" style="background-size:50%;
             background-repeat: no-repeat;>
-<br>
-<div class = "login" style="font-size: 18px">
+<br><
+<div class = "login" style="font-size: 24px">
     <!-- Inputs to our model-->
-<br>
+<br><br><br><br>
 <form action="{{ url_for('predict')}} " method="post">
     
     <label for="txn_amt"> <b> Transaction amount (in US Dollars) :</b> </label>
@@ -92,23 +91,16 @@
     <button type="submit" class="btn btn-primary btn-block btn-large" style="padding: 10px 15px" >Predict</button>
     <br>
 
-</form> <br>
+</form> <br><br><br><br><br>
     <footer class="button"><f> Designed by <a href="https://www.linkedin.com/in/svsriramerramilli/" style="text-align: right;" > S V Sriram Erramilli </a> <a href = "https://news.mit.edu/2018/machine-learning-financial-credit-card-fraud-0920">Image source </a></f></footer>
     <!--footer class="button"></footer-->
-
-
     <style>
 a:link, a:visited {
   color: black;
   padding: 2px 5px;
   }
-
-
 </style>
 
 </div>
-
-
-
 </body>
 </html>
