@@ -13,7 +13,8 @@ Link to the dataset: https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
 I performed an extensive EDA on the dataset. I built a machine learning model using Random Forest Classifier Algorithm which predicts whether an initiated credit card transaction is a fraudulent one or not with a 95% recall score.
 
 Here is what the fraud detection system looks like:
-![image](https://github.com/esvs2202/Credit-card-fraud-detection-system/assets/22242325/629a2a80-7efa-41b7-9126-b1d47fbaaf23)
+![image](https://github.com/esvs2202/Credit-card-fraud-detection-system/assets/22242325/f97db1e1-2145-4033-867f-c2d4860be671)
+
 
 
 
