@@ -2,6 +2,7 @@ import joblib
 import numpy as np
 import pandas as pd
 from flask import Flask, render_template, request
+from colorama import Fore
 
 app = Flask(__name__)
 
@@ -20,14 +21,12 @@ def predict():
 
     """
     if request.method == "POST":
-        
-
-        f_list = [request.form.get('txn_amt'),request.form.get('txn_time'), request.form.get('merch_catg')] # inputs
+        f_list = [request.form.get('txn_amt'), request.form.get('txn_time'), request.form.get('merch_catg')]  # inputs
 
         final_features = np.array(f_list).reshape(-1, 3)
 
         df = pd.DataFrame(final_features,
-                          columns=['amt','trans_hour','category'])
+                          columns=['amt', 'trans_hour', 'category'])
         # transforming the columns
         df['category'] = df['category'].map({'Travel': 0,
                                              'Grocery-Online': 1,
@@ -43,7 +42,7 @@ def predict():
                                              'Miscellaneous-Online': 11,
                                              'Shopping-POS': 12,
                                              'Shopping-Online': 13})
-        
+
         df['trans_hour'] = df['trans_hour'].astype('int')
 
         df['amt'] = df['amt'].astype('float')
@@ -55,9 +54,11 @@ def predict():
         result = result_dict.get(prediction[0])
 
         return render_template('index.html',
-                               prediction_text=f"Result: Initiated transaction of ${f_list[0]} at {f_list[1]}:00 hours for "
+                               prediction_text=f"Result: Initiated transaction of ${f_list[0]} at {f_list[1]}:00 "
+                                               f"hours for "
                                                f"the "
-                                               f"merchant category {f_list[2]} is {result}")
+                                               f"merchant category '{f_list[2]}' = {result}")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
