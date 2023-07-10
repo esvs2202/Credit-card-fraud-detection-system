@@ -37,7 +37,7 @@
 <form action="{{ url_for('predict')}} " method="post">
     
     <label for="txn_amt"> <b> Transaction amount (in US Dollars) :</b> </label>
-    <input type = "number" id = "txn_amt" name = "txn_amt" required = "required" />
+    <input type = "number" id = "txn_amt" name = "txn_amt" required = "required" step = "any" />
     <br><br><br>
     <label for = "txn_time"><b> Transaction time (in hours) :</b></label>
     <select name = 'txn_time' id = 'txn_time'>
