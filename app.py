@@ -2,11 +2,10 @@ import joblib
 import numpy as np
 import pandas as pd
 from flask import Flask, render_template, request
-from colorama import Fore
 
 app = Flask(__name__)
 
-model = joblib.load('models/randomforest_model.pkl')  # loading the saved random forest classifier model.
+model = joblib.load('randomforest_model.pkl')  # loading the saved random forest classifier model.
 
 
 @app.route('/')
