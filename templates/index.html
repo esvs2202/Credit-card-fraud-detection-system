@@ -1,5 +1,9 @@
 <!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <head>
 
     <title> CC Fraud Detection App </title>
@@ -13,21 +17,24 @@
             background-color: #ffcc99;
             color: black;
             text-align: center;
-            padding-right: 120px;
+            padding-right: 50px;
+            font-family: "Calibri";
         }
         </style>
 
 <body>
 
 
-<h1 style="font-size: 28; text-align: center; font-weight: bold; color: blue"><b>Credit card fraud detection system </b></h1>
+<h1 style="font-size: 28; text-align: center; font-weight: bold; color: blue; "><b>Credit card fraud detection system </b></h1>
 <br>
-<b> {{ prediction_text }} </b>
-<br><br><br>
+<b style = "color: brown"> {{ prediction_text }} </b>
+<br><br>
 <img src = "/static/img3.jpg" width="200" height="200" style="background-size:50%;
             background-repeat: no-repeat;>
+<br>
 <div class = "login" style="font-size: 18px">
     <!-- Inputs to our model-->
+<br>
 <form action="{{ url_for('predict')}} " method="post">
     
     <label for="txn_amt"> <b> Transaction amount (in US Dollars) :</b> </label>
@@ -80,13 +87,13 @@
 <option value = 'Shopping-Online'>Shopping-Online</option>
 
     </select>
-<br><br><br>
+<br><br>
 
     <button type="submit" class="btn btn-primary btn-block btn-large" style="padding: 10px 15px" >Predict</button>
-    <br><br>
+    <br>
 
-</form> <br><br>
-    <footer class="button"><f> Designed by <a href="https://www.linkedin.com/in/svsriramerramilli/" style="text-align: right;" > S V Sriram Erramilli </a> </f></footer>
+</form> <br>
+    <footer class="button"><f> Designed by <a href="https://www.linkedin.com/in/svsriramerramilli/" style="text-align: right;" > S V Sriram Erramilli </a> <a href = "https://news.mit.edu/2018/machine-learning-financial-credit-card-fraud-0920">Image source </a></f></footer>
     <!--footer class="button"></footer-->
 
 
