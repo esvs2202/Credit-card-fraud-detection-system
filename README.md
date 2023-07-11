@@ -7,7 +7,7 @@ In most cases, customers get to know of unauthorised transactions happening thro
 
 Now, Finex is also not equipped with the latest financial technologies, and it is becoming difficult for the bank to track these data breaches on time to prevent further losses. The Branch Manager is worried about the ongoing situation. He wants to identify the possible root causes and action areas to develop a long-term solution that would help the bank generate high revenue with minimal losses.
 
-Link to the dataset: https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
+Link to the dataset: https://www.kaggle.com/datasets/kartik2112/fraud-detection
 
 # Solution:
 I performed an extensive EDA on the dataset. I built a machine learning model using Random Forest Classifier Algorithm which predicts whether an initiated credit card transaction is a fraudulent one or not with a 95% recall score.
