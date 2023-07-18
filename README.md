@@ -7,7 +7,7 @@ In most cases, customers get to know of unauthorised transactions happening thro
 
 Finex is also not equipped with the latest financial technologies, and it is becoming difficult for the bank to track these data breaches on time to prevent further losses. The Branch Manager is worried about the ongoing situation. He wants to identify the possible root causes and action areas to develop a long-term solution that would help the bank generate high revenue with minimal losses.
 
-Link to the dataset: https://www.kaggle.com/datasets/kartik2112/fraud-detection
+Link to the dataset: https://www.kaggle.com/datasets/kartik2112/fraud-detection <br>
 Link to the video presentation: https://youtu.be/WBRCYe6gJa0
 
 # Solution:
